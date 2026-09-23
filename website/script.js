@@ -16,66 +16,155 @@ such as Amazon DynamoDB.
 
 const opportunities = [
 
-{
-    title: "IT Support Learnership",
-    type: "learnership",
-    typeDisplay: "Learnership",
-    location: "gauteng",
-    locationDisplay: "Gauteng",
-    description:
-        "Develop practical information technology and technical support skills."
-},
+    {
+        title: "IT Support Learnership",
 
-{
-    title: "Junior Cloud Computing Internship",
-    type: "internship",
-    typeDisplay: "Internship",
-    location: "western-cape",
-    locationDisplay: "Western Cape",
-    description:
-        "Gain practical experience with cloud computing and modern IT technologies."
-},
+        type: "learnership",
+        typeDisplay: "Learnership",
 
-{
-    title: "AWS Cloud Fundamentals",
-    type: "training",
-    typeDisplay: "Training",
-    location: "online",
-    locationDisplay: "Online",
-    description:
-        "Learn the fundamentals of cloud computing, AWS services and cloud security."
-},
+        location: "gauteng",
+        locationDisplay: "Gauteng",
 
-{
-    title: "Junior IT Technician",
-    type: "job",
-    typeDisplay: "Job",
-    location: "kwazulu-natal",
-    locationDisplay: "KwaZulu-Natal",
-    description:
-        "Entry-level technical support opportunity for aspiring IT professionals."
-},
+        description:
+            "Develop practical information technology and technical support skills.",
 
-{
-    title: "Web Development Learnership",
-    type: "learnership",
-    typeDisplay: "Learnership",
-    location: "eastern-cape",
-    locationDisplay: "Eastern Cape",
-    description:
-        "Learn the fundamentals of web development and modern programming."
-},
+        provider:
+            "Example Training Organisation",
 
-{
-    title: "Introduction to Python",
-    type: "training",
-    typeDisplay: "Training",
-    location: "online",
-    locationDisplay: "Online",
-    description:
-        "Build foundational programming skills using the Python programming language."
-}
+        duration:
+            "12 months",
 
+        requirements:
+            "Grade 12 and an interest in information technology.",
+
+        applicationInfo:
+            "Application information will be provided when this opportunity is published."
+    },
+
+    {
+        title: "Junior Cloud Computing Internship",
+
+        type: "internship",
+        typeDisplay: "Internship",
+
+        location: "western-cape",
+        locationDisplay: "Western Cape",
+
+        description:
+            "Gain practical experience with cloud computing and modern IT technologies.",
+
+        provider:
+            "Example Technology Organisation",
+
+        duration:
+            "6 months",
+
+        requirements:
+            "Relevant IT qualification or current IT studies.",
+
+        applicationInfo:
+            "Application information will be provided when this opportunity is published."
+    },
+
+    {
+        title: "AWS Cloud Fundamentals",
+
+        type: "training",
+        typeDisplay: "Training",
+
+        location: "online",
+        locationDisplay: "Online",
+
+        description:
+            "Learn the fundamentals of cloud computing, AWS services and cloud security.",
+
+        provider:
+            "Example Online Training Provider",
+
+        duration:
+            "8 weeks",
+
+        requirements:
+            "Basic computer literacy and an interest in cloud computing.",
+
+        applicationInfo:
+            "Training registration information will be provided when this course is published."
+    },
+
+    {
+        title: "Junior IT Technician",
+
+        type: "job",
+        typeDisplay: "Job",
+
+        location: "kwazulu-natal",
+        locationDisplay: "KwaZulu-Natal",
+
+        description:
+            "Entry-level technical support opportunity for aspiring IT professionals.",
+
+        provider:
+            "Example IT Services Company",
+
+        duration:
+            "Permanent",
+
+        requirements:
+            "Basic computer troubleshooting knowledge and good communication skills.",
+
+        applicationInfo:
+            "Application information will be provided when this opportunity is published."
+    },
+
+    {
+        title: "Web Development Learnership",
+
+        type: "learnership",
+        typeDisplay: "Learnership",
+
+        location: "eastern-cape",
+        locationDisplay: "Eastern Cape",
+
+        description:
+            "Learn the fundamentals of web development and modern programming.",
+
+        provider:
+            "Example Digital Skills Organisation",
+
+        duration:
+            "12 months",
+
+        requirements:
+            "Grade 12 and an interest in programming or web development.",
+
+        applicationInfo:
+            "Application information will be provided when this opportunity is published."
+    },
+
+    {
+        title: "Introduction to Python",
+
+        type: "training",
+        typeDisplay: "Training",
+
+        location: "online",
+        locationDisplay: "Online",
+
+        description:
+            "Build foundational programming skills using the Python programming language.",
+
+        provider:
+            "Example Online Training Provider",
+
+        duration:
+            "6 weeks",
+
+        requirements:
+            "Basic computer literacy. No previous programming experience required.",
+
+        applicationInfo:
+            "Training registration information will be provided when this course is published."
+    }
 
 ];
 
@@ -214,26 +303,66 @@ function showOpportunityDetails(opportunity) {
             ${opportunity.typeDisplay}
         </span>
 
-        <p>
-            ${opportunity.description}
-        </p>
-
         <p class="location">
             📍 ${opportunity.locationDisplay}
         </p>
 
-        <div class="modal-details">
+        <div class="modal-section">
+
+            <h3>Description</h3>
+
+            <p>
+                ${opportunity.description}
+            </p>
+
+        </div>
+
+        <div class="modal-section">
 
             <h3>Opportunity Information</h3>
 
-            <p>
-                <strong>Type:</strong>
-                ${opportunity.typeDisplay}
-            </p>
+            <div class="modal-details">
+
+                <p>
+                    <strong>Provider:</strong>
+                    ${opportunity.provider}
+                </p>
+
+                <p>
+                    <strong>Duration:</strong>
+                    ${opportunity.duration}
+                </p>
+
+                <p>
+                    <strong>Location:</strong>
+                    ${opportunity.locationDisplay}
+                </p>
+
+                <p>
+                    <strong>Type:</strong>
+                    ${opportunity.typeDisplay}
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="modal-section">
+
+            <h3>Requirements</h3>
 
             <p>
-                <strong>Location:</strong>
-                ${opportunity.locationDisplay}
+                ${opportunity.requirements}
+            </p>
+
+        </div>
+
+        <div class="modal-section">
+
+            <h3>Application Information</h3>
+
+            <p>
+                ${opportunity.applicationInfo}
             </p>
 
         </div>
