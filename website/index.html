@@ -1,15 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
+    <!-- Makes the website display correctly on phones and tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>SA Skills Hub</title>
+
+    <!-- Connect our CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <h1>SA Skills Hub</h1>
+    <!-- ==================== HEADER ==================== -->
+    <header>
 
-    <p>Employment and skills-development opportunities for South Africans.</p>
+        <nav class="navbar">
+
+            <div class="logo">
+                SA Skills Hub
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#opportunities">Opportunities</a></li>
+                <li><a href="#learnerships">Learnerships</a></li>
+                <li><a href="#internships">Internships</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+
+        <!-- ==================== HERO SECTION ==================== -->
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <h1>Find Your Next Opportunity</h1>
+
+                <p>
+                    Discover jobs, learnerships, internships and
+                    skills-development opportunities in South Africa.
+                </p>
+
+                <a href="#opportunities" class="hero-button">
+                    Explore Opportunities
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== SEARCH SECTION ==================== -->
+        <section class="search-section">
+
+            <h2>Search Opportunities</h2>
+
+            <div class="search-container">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search for jobs, learnerships or training..."
+                >
+
+                <select id="categoryFilter">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="job">
+                        Jobs
+                    </option>
+
+                    <option value="learnership">
+                        Learnerships
+                    </option>
+
+                    <option value="internship">
+                        Internships
+                    </option>
+
+                    <option value="training">
+                        Training
+                    </option>
+
+                </select>
+
+                <select id="locationFilter">
+
+                    <option value="all">
+                        All Locations
+                    </option>
+
+                    <option value="gauteng">
+                        Gauteng
+                    </option>
+
+                    <option value="western-cape">
+                        Western Cape
+                    </option>
+
+                    <option value="kwazulu-natal">
+                        KwaZulu-Natal
+                    </option>
+
+                    <option value="eastern-cape">
+                        Eastern Cape
+                    </option>
+
+                    <option value="online">
+                        Online
+                    </option>
+
+                </select>
+
+                <button id="searchButton">
+                    Search
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== OPPORTUNITIES ==================== -->
+        <section id="opportunities" class="opportunities-section">
+
+            <div class="section-heading">
+
+                <h2>Featured Opportunities</h2>
+
+                <p>
+                    Explore opportunities currently available on the platform.
+                </p>
+
+            </div>
+
+
+            <div id="opportunityList" class="opportunity-list">
+
+                <!-- Opportunity 1 -->
+                <article class="opportunity-card">
+
+                    <span class="opportunity-type">
+                        Learnership
+                    </span>
+
+                    <h3>IT Support Learnership</h3>
+
+                    <p>
+                        Develop practical information technology
+                        and technical support skills.
+                    </p>
+
+                    <p class="location">
+                        📍 Gauteng
+                    </p>
+
+                    <button class="view-button">
+                        View Opportunity
+                    </button>
+
+                </article>
+
+
+                <!-- Opportunity 2 -->
+                <article class="opportunity-card">
+
+                    <span class="opportunity-type">
+                        Internship
+                    </span>
+
+                    <h3>Junior Cloud Computing Internship</h3>
+
+                    <p>
+                        Gain practical experience with cloud computing
+                        and modern IT technologies.
+                    </p>
+
+                    <p class="location">
+                        📍 Western Cape
+                    </p>
+
+                    <button class="view-button">
+                        View Opportunity
+                    </button>
+
+                </article>
+
+
+                <!-- Opportunity 3 -->
+                <article class="opportunity-card">
+
+                    <span class="opportunity-type">
+                        Training
+                    </span>
+
+                    <h3>AWS Cloud Fundamentals</h3>
+
+                    <p>
+                        Learn the fundamentals of cloud computing,
+                        AWS services and cloud security.
+                    </p>
+
+                    <p class="location">
+                        📍 Online
+                    </p>
+
+                    <button class="view-button">
+                        View Opportunity
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== ABOUT SECTION ==================== -->
+        <section id="about" class="about-section">
+
+            <h2>About SA Skills Hub</h2>
+
+            <p>
+                SA Skills Hub is a cloud-based platform designed to
+                make employment and skills-development opportunities
+                easier to discover.
+            </p>
+
+            <p>
+                The project was created as a practical demonstration
+                of cloud computing concepts learned through the
+                AWS re/Start programme.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+
+        <p>
+            &copy; 2026 SA Skills Hub
+        </p>
+
+        <p>
+            Built as an AWS re/Start learning project.
+        </p>
+
+    </footer>
+
+
+    <!-- Connect our JavaScript file -->
+    <script src="script.js"></script>
 
 </body>
+
 </html>
