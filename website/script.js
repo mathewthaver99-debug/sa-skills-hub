@@ -103,6 +103,15 @@ document.getElementById("searchButton");
 const opportunityList =
 document.getElementById("opportunityList");
 
+const opportunityModal =
+    document.getElementById("opportunityModal");
+
+const modalContent =
+    document.getElementById("modalContent");
+
+const closeModal =
+    document.getElementById("closeModal");
+
 /* =========================================================
 3. DISPLAY OPPORTUNITIES
 ========================================================= */
@@ -150,11 +159,61 @@ opportunityArray.forEach(function(opportunity) {
 
 
     card.innerHTML = `
+    <span class="opportunity-type">
+        ${opportunity.typeDisplay}
+    </span>
+
+    <h3>${opportunity.title}</h3>
+
+    <p>
+        ${opportunity.description}
+    </p>
+
+    <p class="location">
+        📍 ${opportunity.locationDisplay}
+    </p>
+
+    <button class="view-button">
+        View Opportunity
+    </button>
+`;
+
+const viewButton =
+    card.querySelector(".view-button");
+
+viewButton.addEventListener(
+    "click",
+    function() {
+
+        showOpportunityDetails(opportunity);
+
+    }
+);
+
+
+    opportunityList.appendChild(card);
+
+});
+```
+
+}
+
+function showOpportunityDetails(opportunity) {
+
+    /*
+       Create the content that will appear
+       inside the modal.
+    */
+
+    modalContent.innerHTML = `
+
+        <h2>
+            ${opportunity.title}
+        </h2>
+
         <span class="opportunity-type">
             ${opportunity.typeDisplay}
         </span>
-
-        <h3>${opportunity.title}</h3>
 
         <p>
             ${opportunity.description}
@@ -164,18 +223,53 @@ opportunityArray.forEach(function(opportunity) {
             📍 ${opportunity.locationDisplay}
         </p>
 
-        <button class="view-button">
-            View Opportunity
-        </button>
+        <div class="modal-details">
+
+            <h3>Opportunity Information</h3>
+
+            <p>
+                <strong>Type:</strong>
+                ${opportunity.typeDisplay}
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                ${opportunity.locationDisplay}
+            </p>
+
+        </div>
+
     `;
 
+    /*
+       Make the modal visible.
+    */
 
-    opportunityList.appendChild(card);
-
-});
-```
+    opportunityModal.style.display = "flex";
 
 }
+
+closeModal.addEventListener(
+    "click",
+    function() {
+
+        opportunityModal.style.display = "none";
+
+    }
+);
+
+opportunityModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === opportunityModal) {
+
+            opportunityModal.style.display = "none";
+
+        }
+
+    }
+);
 
 /* =========================================================
 4. SEARCH AND FILTER
