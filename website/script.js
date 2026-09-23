@@ -16,7 +16,6 @@ such as Amazon DynamoDB.
 
 const opportunities = [
 
-```
 {
     title: "IT Support Learnership",
     type: "learnership",
@@ -76,7 +75,7 @@ const opportunities = [
     description:
         "Build foundational programming skills using the Python programming language."
 }
-```
+
 
 ];
 
@@ -123,7 +122,7 @@ displays them on the webpage.
 
 function displayOpportunities(opportunityArray) {
 
-```
+
 /*
    Clear the existing opportunity cards.
 */
@@ -194,7 +193,7 @@ viewButton.addEventListener(
     opportunityList.appendChild(card);
 
 });
-```
+
 
 }
 
@@ -282,7 +281,7 @@ location selected by the user.
 
 function searchOpportunities() {
 
-```
+
 /*
    Get the user's search text.
 
@@ -370,7 +369,7 @@ const filteredOpportunities =
 */
 
 displayOpportunities(filteredOpportunities);
-```
+
 
 }
 
