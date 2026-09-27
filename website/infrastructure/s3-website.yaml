@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: >
+  S3 static website infrastructure for the SA Skills Hub project.
+
+Resources:
+
+  WebsiteBucket:
+    Type: AWS::S3::Bucket
+
+    Properties:
+
+      WebsiteConfiguration:
+        IndexDocument: index.html
+
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: false
+        RestrictPublicBuckets: false
+
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+
+    Properties:
+
+      Bucket: !Ref WebsiteBucket
+
+      PolicyDocument:
+
+        Version: '2012-10-17'
+
+        Statement:
+
+          - Sid: PublicReadGetObject
+            Effect: Allow
+
+            Principal: '*'
+
+            Action:
+              - s3:GetObject
+
+            Resource:
+              - !Sub '${WebsiteBucket.Arn}/*'
+
+Outputs:
+
+  WebsiteBucketName:
+    Description: Name of the S3 bucket hosting the SA Skills Hub website.
+    Value: !Ref WebsiteBucket
+
+  WebsiteURL:
+    Description: URL of the SA Skills Hub static website.
+    Value: !GetAtt WebsiteBucket.WebsiteURL
