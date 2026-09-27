@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: >
+  DynamoDB infrastructure for the SA Skills Hub project.
+
+Resources:
+
+  OpportunitiesTable:
+    Type: AWS::DynamoDB::Table
+
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+
+    Properties:
+
+      TableName: SA-Skills-Hub-Opportunities
+
+      BillingMode: PAY_PER_REQUEST
+
+      AttributeDefinitions:
+
+        - AttributeName: id
+          AttributeType: S
+
+      KeySchema:
+
+        - AttributeName: id
+          KeyType: HASH
+
+Outputs:
+
+  OpportunitiesTableName:
+    Description: Name of the DynamoDB table storing SA Skills Hub opportunities.
+    Value: !Ref OpportunitiesTable
+
+  OpportunitiesTableArn:
+    Description: ARN of the DynamoDB opportunities table.
+    Value: !GetAtt OpportunitiesTable.Arn

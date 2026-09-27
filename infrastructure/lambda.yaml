@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: >
+  Lambda infrastructure for the SA Skills Hub project.
+
+Resources:
+
+  OpportunitiesFunction:
+    Type: AWS::Lambda::Function
+
+    Properties:
+
+      FunctionName: SA-Skills-Hub-Get-Opportunities
+
+      Runtime: python3.12
+
+      Handler: index.lambda_handler
+
+      Role: arn:aws:iam::387172901450:role/LabRole
+
+      Timeout: 10
+
+      MemorySize: 128
+
+      Code:
+
+        ZipFile: |
+          import json
+          import boto3
+
+          dynamodb = boto3.resource("dynamodb")
+
+          table = dynamodb.Table("SA-Skills-Hub-Opportunities")
+
+
+          def lambda_handler(event, context):
+
+              try:
+
+                  response = table.scan()
+
+                  opportunities = response.get("Items", [])
+
+                  return {
+                      "statusCode": 200,
+                      "headers": {
+                          "Content-Type": "application/json"
+                      },
+                      "body": json.dumps(opportunities)
+                  }
+
+              except Exception as error:
+
+                  return {
+                      "statusCode": 500,
+                      "headers": {
+                          "Content-Type": "application/json"
+                      },
+                      "body": json.dumps({
+                          "error": str(error)
+                      })
+                  }
+
+
+Outputs:
+
+  LambdaFunctionName:
+    Description: Name of the Lambda function used to retrieve opportunities.
+    Value: !Ref OpportunitiesFunction
+
+  LambdaFunctionArn:
+    Description: ARN of the Lambda function used to retrieve opportunities.
+    Value: !GetAtt OpportunitiesFunction.Arn
