@@ -5,7 +5,7 @@ A cloud-based platform for discovering employment, learnership, internship and s
 Project Goals
 
 Stage 1:
-Create static website
+Create static website (done)
 
 Stage 2:
 Deploy static website to S3
