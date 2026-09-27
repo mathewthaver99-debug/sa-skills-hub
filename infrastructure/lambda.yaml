@@ -5,51 +5,6 @@ Description: >
 
 Resources:
 
-  LambdaExecutionRole:
-    Type: AWS::IAM::Role
-
-    Properties:
-
-      RoleName: SA-Skills-Hub-Lambda-Execution-Role
-
-      AssumeRolePolicyDocument:
-
-        Version: '2012-10-17'
-
-        Statement:
-
-          - Effect: Allow
-
-            Principal:
-              Service:
-                - lambda.amazonaws.com
-
-            Action:
-              - sts:AssumeRole
-
-      ManagedPolicyArns:
-
-        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-
-      Policies:
-
-        - PolicyName: DynamoDBReadAccess
-
-          PolicyDocument:
-
-            Version: '2012-10-17'
-
-            Statement:
-
-              - Effect: Allow
-
-                Action:
-                  - dynamodb:Scan
-
-                Resource:
-                  - arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/SA-Skills-Hub-Opportunities
-
-
   OpportunitiesFunction:
     Type: AWS::Lambda::Function
 
@@ -61,7 +16,7 @@ Resources:
 
       Handler: index.lambda_handler
 
-      Role: !GetAtt LambdaExecutionRole.Arn
+      Role: arn:aws:iam::387172901450:role/LabRole
 
       Timeout: 10
 
