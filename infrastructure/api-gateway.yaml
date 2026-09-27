@@ -1,0 +1,82 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: >
+  API Gateway infrastructure for the SA Skills Hub project.
+
+Resources:
+
+  OpportunitiesApi:
+    Type: AWS::ApiGateway::RestApi
+
+    Properties:
+      Name: SA-Skills-Hub-API
+      Description: API for the SA Skills Hub opportunities platform.
+
+
+  OpportunitiesResource:
+    Type: AWS::ApiGateway::Resource
+
+    Properties:
+      RestApiId: !Ref OpportunitiesApi
+      ParentId: !GetAtt OpportunitiesApi.RootResourceId
+      PathPart: opportunities
+
+
+  GetOpportunitiesMethod:
+    Type: AWS::ApiGateway::Method
+
+    Properties:
+      RestApiId: !Ref OpportunitiesApi
+      ResourceId: !Ref OpportunitiesResource
+      HttpMethod: GET
+
+      AuthorizationType: NONE
+
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+
+        Uri:
+          !Sub >
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:SA-Skills-Hub-Get-Opportunities/invocations
+
+
+  LambdaApiGatewayPermission:
+    Type: AWS::Lambda::Permission
+
+    Properties:
+      FunctionName: SA-Skills-Hub-Get-Opportunities
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+
+
+  ApiDeployment:
+    Type: AWS::ApiGateway::Deployment
+
+    DependsOn:
+      - GetOpportunitiesMethod
+
+    Properties:
+      RestApiId: !Ref OpportunitiesApi
+
+
+  ApiStage:
+    Type: AWS::ApiGateway::Stage
+
+    Properties:
+      RestApiId: !Ref OpportunitiesApi
+      DeploymentId: !Ref ApiDeployment
+      StageName: prod
+
+
+Outputs:
+
+  ApiId:
+    Description: ID of the SA Skills Hub API.
+    Value: !Ref OpportunitiesApi
+
+  ApiEndpoint:
+    Description: Base URL of the SA Skills Hub API.
+    Value:
+      !Sub >
+        https://${OpportunitiesApi}.execute-api.${AWS::Region}.amazonaws.com/prod
