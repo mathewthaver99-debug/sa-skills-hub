@@ -17,7 +17,7 @@ Stage 4:
 Create Lambda functions for database (done)
 
 Stage 5:
-Expose Lambda functions through API Gateway
+Expose Lambda functions through API Gateway (pending)
 
 Stage 6:
 Connect the frontend to the API
