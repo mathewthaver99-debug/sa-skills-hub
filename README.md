@@ -14,7 +14,7 @@ Stage 3:
 Create DynamoDB data model (done)
 
 Stage 4:
-Create Lambda functions for database
+Create Lambda functions for database (done)
 
 Stage 5:
 Expose Lambda functions through API Gateway
