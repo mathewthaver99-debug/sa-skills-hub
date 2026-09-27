@@ -11,7 +11,7 @@ Stage 2:
 Deploy static website to S3 (done)
 
 Stage 3:
-Create DynamoDB data model
+Create DynamoDB data model (done)
 
 Stage 4:
 Create Lambda functions for database
