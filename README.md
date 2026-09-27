@@ -8,7 +8,7 @@ Stage 1:
 Create static website (done)
 
 Stage 2:
-Deploy static website to S3
+Deploy static website to S3 (done)
 
 Stage 3:
 Create DynamoDB data model
