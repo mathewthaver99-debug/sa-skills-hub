@@ -3,9 +3,24 @@ A cloud-based platform for discovering employment, learnership, internship and s
 
 
 Project Goals
-Provide a simple and accessible web interface.
-Display employment and skills-development opportunities.
-Organise opportunities by category and location.
-Demonstrate the use of AWS cloud services.
-Apply concepts learned through the AWS re/Start Cloud Practitioner programme.
-AWS Technologies
+
+Stage 1:
+Create static website
+
+Stage 2:
+Deploy static website to S3
+
+Stage 3:
+Create DynamoDB data model
+
+Stage 4:
+Create Lambda functions for database
+
+Stage 5:
+Expose Lambda functions through API Gateway
+
+Stage 6:
+Connect the frontend to the API
+
+Stage 7:
+Configure AMI permissions and CloudWatch monitoring
