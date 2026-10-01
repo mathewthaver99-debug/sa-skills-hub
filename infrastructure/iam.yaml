@@ -1,0 +1,59 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: >
+  IAM infrastructure for the SA Skills Hub project.
+
+Resources:
+
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+
+    Properties:
+      RoleName: SA-Skills-Hub-Lambda-Execution-Role
+
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+
+        Statement:
+          - Effect: Allow
+
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+
+            Action:
+              - sts:AssumeRole
+
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+      Policies:
+
+        - PolicyName: SA-Skills-Hub-DynamoDB-ReadAccess
+
+          PolicyDocument:
+            Version: '2012-10-17'
+
+            Statement:
+
+              - Effect: Allow
+
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:Scan
+                  - dynamodb:Query
+
+                Resource:
+                  - !Sub >
+                    arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/SA-Skills-Hub-Opportunities
+
+
+Outputs:
+
+  LambdaExecutionRoleArn:
+    Description: ARN of the IAM role used by SA Skills Hub Lambda functions.
+    Value: !GetAtt LambdaExecutionRole.Arn
+
+  LambdaExecutionRoleName:
+    Description: Name of the IAM role used by SA Skills Hub Lambda functions.
+    Value: !Ref LambdaExecutionRole
