@@ -76,7 +76,7 @@ Outputs:
     Value: !Ref OpportunitiesApi
 
   ApiEndpoint:
-    Description: Base URL of the SA Skills Hub API.
+    Description: URL of the SA Skills Hub opportunities endpoint.
     Value:
       !Sub >
-        https://${OpportunitiesApi}.execute-api.${AWS::Region}.amazonaws.com/prod
+        https://${OpportunitiesApi}.execute-api.${AWS::Region}.amazonaws.com/prod/opportunities
