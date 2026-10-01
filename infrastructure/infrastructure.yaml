@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: >
+  Master infrastructure template for the SA Skills Hub project.
+  This template defines the overall AWS architecture and references
+  the individual infrastructure components used by the project.
+
+Metadata:
+
+  AWS::CloudFormation::Interface:
+
+    ParameterGroups:
+
+      - Label:
+          default: SA Skills Hub Configuration
+
+        Parameters:
+          - EnvironmentName
+
+    ParameterLabels:
+
+      EnvironmentName:
+        default: Environment name
+
+
+Parameters:
+
+  EnvironmentName:
+    Type: String
+
+    Default: dev
+
+    AllowedValues:
+      - dev
+      - test
+      - prod
+
+    Description: >
+      Deployment environment for the SA Skills Hub infrastructure.
+
+
+Outputs:
+
+  EnvironmentName:
+    Description: Environment used by this SA Skills Hub deployment.
+    Value: !Ref EnvironmentName
+
+  ProjectName:
+    Description: Name of the project.
+    Value: SA-Skills-Hub
+
+  Architecture:
+    Description: High-level architecture of the SA Skills Hub platform.
+    Value: >
+      S3 Website -> API Gateway -> Lambda -> DynamoDB
